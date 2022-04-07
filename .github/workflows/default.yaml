@@ -1,0 +1,40 @@
+name: Golang workflow
+
+on:
+  workflow_dispatch:
+  pull_request:
+  push:
+    branches:
+      - develop
+      - master
+    tags:
+      - "*"
+
+jobs:
+  commitlint:
+    runs-on: [self-hosted, docker]
+    name: Commit lint
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: wagoid/commitlint-github-action@v5
+
+  linter:
+    runs-on: [self-hosted, golang-122]
+    name: Run all linters
+    steps:
+      - uses: actions/checkout@v4
+      - name: golangci-lint
+        uses: golangci/golangci-lint-action@v3
+        with:
+          version: latest
+          skip-cache: true
+          args: --build-tags=integration --build-tags=unit
+
+  test:
+    runs-on: [self-hosted, golang-122]
+    name: Run tests
+    steps:
+      - uses: actions/checkout@v4
+      - run: make unit

@@ -13,7 +13,6 @@ var rankCheckers = []rankCheck{
 	isThreeOfAKind,
 	isDoublePair,
 	isPair,
-	isHighCard,
 }
 
 func ComputeStrength(h hand.Hand) Strength {
@@ -23,6 +22,5 @@ func ComputeStrength(h hand.Hand) Strength {
 		}
 	}
 
-	// cannot happen as it should be at least a HighCard
-	return ""
+	return highCard(h)
 }

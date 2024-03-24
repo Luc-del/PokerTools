@@ -16,7 +16,7 @@ type Strength string
 func computePower(r rank.Rank, cardValues ...card.Value) Strength {
 	hexStringConcat := strconv.Itoa(int(r))
 	for _, value := range cardValues {
-		hexStringConcat += cardValueToHexString(value) //hex conversion
+		hexStringConcat += cardValueToHexString(value) // hex conversion
 	}
 
 	return Strength(hexStringConcat)

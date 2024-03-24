@@ -2,7 +2,7 @@ package card
 
 //go:generate enumer -type Value -output values.gen.go
 
-// Value represents the value of a card, Ace being the top one
+// Value represents the value of a card, Ace being the top one.
 type Value int
 
 const (

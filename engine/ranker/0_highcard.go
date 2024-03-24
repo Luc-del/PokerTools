@@ -5,6 +5,6 @@ import (
 	"pokerTools/models/rank"
 )
 
-func isHighCard(h hand.Hand) (Strength, bool) {
-	return computePower(rank.HighCard, values(h)...), true
+func highCard(h hand.Hand) Strength {
+	return computePower(rank.HighCard, values(h)...)
 }

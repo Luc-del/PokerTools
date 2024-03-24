@@ -1,4 +1,4 @@
-package ranker
+package ranker_test
 
 import (
 	"testing"

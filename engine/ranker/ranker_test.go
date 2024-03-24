@@ -1,6 +1,7 @@
-package ranker
+package ranker_test
 
 import (
+	"pokerTools/engine/ranker"
 	"pokerTools/models/card"
 	"pokerTools/models/hand"
 	"slices"
@@ -229,54 +230,53 @@ var (
 
 func TestComputeStrength(t *testing.T) {
 	t.Run("high card", func(t *testing.T) {
-		assert.Equal(t, Strength("0ed652"), ComputeStrength(highCard))
+		assert.Equal(t, ranker.Strength("0ed652"), ranker.ComputeStrength(highCard))
 	})
 
 	t.Run("pair", func(t *testing.T) {
-		assert.Equal(t, Strength("1ed62"), ComputeStrength(pair))
+		assert.Equal(t, ranker.Strength("1ed62"), ranker.ComputeStrength(pair))
 	})
 
 	t.Run("double pair", func(t *testing.T) {
-		assert.Equal(t, Strength("2e2c"), ComputeStrength(doublePair))
+		assert.Equal(t, ranker.Strength("2e2c"), ranker.ComputeStrength(doublePair))
 	})
 
 	t.Run("three of a kind", func(t *testing.T) {
-		assert.Equal(t, Strength("32eb"), ComputeStrength(threeOfAKind))
+		assert.Equal(t, ranker.Strength("32eb"), ranker.ComputeStrength(threeOfAKind))
 	})
 
 	t.Run("straight", func(t *testing.T) {
-		assert.Equal(t, Strength("46"), ComputeStrength(straight))
+		assert.Equal(t, ranker.Strength("46"), ranker.ComputeStrength(straight))
 	})
 
 	t.Run("flush", func(t *testing.T) {
-		assert.Equal(t, Strength("5ba532"), ComputeStrength(flush))
+		assert.Equal(t, ranker.Strength("5ba532"), ranker.ComputeStrength(flush))
 	})
 
 	t.Run("full", func(t *testing.T) {
-		assert.Equal(t, Strength("635"), ComputeStrength(full))
+		assert.Equal(t, ranker.Strength("635"), ranker.ComputeStrength(full))
 	})
 
 	t.Run("four of a kind", func(t *testing.T) {
-		assert.Equal(t, Strength("736"), ComputeStrength(fourOfAKind))
+		assert.Equal(t, ranker.Strength("736"), ranker.ComputeStrength(fourOfAKind))
 	})
 
 	t.Run("straight flush", func(t *testing.T) {
-		assert.Equal(t, Strength("87"), ComputeStrength(straightFlush))
+		assert.Equal(t, ranker.Strength("87"), ranker.ComputeStrength(straightFlush))
 	})
 
 	t.Run("order", func(t *testing.T) {
-		expectedOrder := []Strength{
-			ComputeStrength(highCard),
-			ComputeStrength(pair),
-			ComputeStrength(doublePair),
-			ComputeStrength(threeOfAKind),
-			ComputeStrength(straight),
-			ComputeStrength(flush),
-			ComputeStrength(full),
-			ComputeStrength(fourOfAKind),
-			ComputeStrength(straightFlush),
+		expectedOrder := []ranker.Strength{
+			ranker.ComputeStrength(highCard),
+			ranker.ComputeStrength(pair),
+			ranker.ComputeStrength(doublePair),
+			ranker.ComputeStrength(threeOfAKind),
+			ranker.ComputeStrength(straight),
+			ranker.ComputeStrength(flush),
+			ranker.ComputeStrength(full),
+			ranker.ComputeStrength(fourOfAKind),
+			ranker.ComputeStrength(straightFlush),
 		}
 		assert.True(t, slices.IsSorted(expectedOrder))
 	})
-
 }

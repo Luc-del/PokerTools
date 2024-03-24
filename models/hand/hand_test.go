@@ -1,7 +1,8 @@
-package hand
+package hand_test
 
 import (
 	"pokerTools/models/card"
+	"pokerTools/models/hand"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -32,7 +33,7 @@ func TestNewHand(t *testing.T) {
 			},
 		}
 
-		h := NewHand(cards)
+		h := hand.NewHand(cards)
 		for i := 0; i < 4; i++ {
 			assert.True(t, h.Cards[i+1].Value <= h.Cards[i].Value)
 		}

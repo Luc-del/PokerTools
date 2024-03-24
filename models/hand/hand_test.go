@@ -34,7 +34,7 @@ func TestNewHand(t *testing.T) {
 
 		h := NewHand(cards)
 		for i := 0; i < 4; i++ {
-			assert.True(t, h.cards[i+1].Value <= h.cards[i].Value)
+			assert.True(t, h.Cards[i+1].Value <= h.Cards[i].Value)
 		}
 	})
 }

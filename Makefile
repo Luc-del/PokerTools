@@ -3,3 +3,6 @@ lint: ## Run the linter
 
 unit: ## Run unit tests
 	go test -race ./...
+
+gen: ## Generate files
+	go generate ./...
